@@ -15,8 +15,8 @@ public class App {
         try {
             conn = DB.getconnection();
 
-            st = conn.prepareStatement("INSERT INTO seller "
-                    + "(Name, Email, BirthDate, BaseSalary, DepartmentId)"
+            st = conn.prepareStatement("INSERT INTO department "
+                    + "(Name Email, BirthDate, BaseSalary, DepartmentId)"
                     + "VALUES"
                     + "(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             st.setString(1, "José Ferreira Rodrigues");

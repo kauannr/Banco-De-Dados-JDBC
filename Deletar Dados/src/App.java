@@ -1,7 +1,9 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import DB.DbIntegrityException;
 import DB.DB;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -9,18 +11,17 @@ public class App {
         PreparedStatement st = null;
         try {
             conn = DB.getconnection();
-            st = conn.prepareStatement("UPDATE seller "
-                    + "SET Name = BaseSalary + ? "
+            st = conn.prepareStatement("DELETE FROM department "
                     + "WHERE "
-                    + "(DepartmentId = ?)");
+                    + "Id = ?");
+            st.setInt(1, 2);
 
-            st.setDouble(1, 200.0);
-            st.setInt(2, 2);
             int linhasAfetadas = st.executeUpdate();
-            System.out.println("Sucesso! Linhas afetadas: " + linhasAfetadas);
+            System.out.println("Sucesso! linhas afetadas: " + linhasAfetadas);
+
         } catch (Exception e) {
-            e.printStackTrace();
-        }finally{
+            throw new DbIntegrityException(e.getMessage());
+        } finally {
             DB.closeStatemet(st);
             DB.closeConnection();
         }
