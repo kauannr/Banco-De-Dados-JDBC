@@ -50,6 +50,7 @@ public class DB {
         }
     }
 
+    // Fechamentos
     public static void closeStatemet(Statement statement) {
         if (statement != null) {
             try {
