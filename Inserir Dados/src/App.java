@@ -15,8 +15,8 @@ public class App {
         try {
             conn = DB.getconnection();
 
-            st = conn.prepareStatement("INSERT INTO department "
-                    + "(Name Email, BirthDate, BaseSalary, DepartmentId)"
+            st = conn.prepareStatement("INSERT INTO seller "
+                    + "(Name, Email, BirthDate, BaseSalary, DepartmentId)"
                     + "VALUES"
                     + "(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             st.setString(1, "José Ferreira Rodrigues");
@@ -26,13 +26,13 @@ public class App {
             st.setInt(5, 2);
 
             int linhasAfetadas = st.executeUpdate();
-            if(linhasAfetadas>0){
+            if (linhasAfetadas > 0) {
                 ResultSet rs = st.getGeneratedKeys();
                 while (rs.next()) {
                     int id = rs.getInt(1);
                     System.out.println("Sucesso! Id: " + id);
                 }
-            }else{
+            } else {
                 System.out.println("Sem linhas afetadas");
             }
 

@@ -10,12 +10,11 @@ public class App {
         try {
             conn = DB.getconnection();
             st = conn.prepareStatement("UPDATE seller "
-                    + "SET Name = BaseSalary + ? "
+                    + "SET Id = 8 "
                     + "WHERE "
-                    + "(DepartmentId = ?)");
+                    + "(Name = ?)");
 
-            st.setDouble(1, 200.0);
-            st.setInt(2, 2);
+            st.setString(1, "José Ferreira Rodrigues");
             int linhasAfetadas = st.executeUpdate();
             System.out.println("Sucesso! Linhas afetadas: " + linhasAfetadas);
         } catch (Exception e) {

@@ -11,10 +11,10 @@ public class App {
         PreparedStatement st = null;
         try {
             conn = DB.getconnection();
-            st = conn.prepareStatement("DELETE FROM department "
+            st = conn.prepareStatement("DELETE FROM seller "
                     + "WHERE "
                     + "Id = ?");
-            st.setInt(1, 2);
+            st.setInt(1, 8);
 
             int linhasAfetadas = st.executeUpdate();
             System.out.println("Sucesso! linhas afetadas: " + linhasAfetadas);
